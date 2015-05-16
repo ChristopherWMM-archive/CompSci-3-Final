@@ -1,27 +1,32 @@
 ﻿import UnityEngine.UI;
+import UnityEngine;
+
 
 var cashFlow:int;
 public var cashReady:int;
 var time:float;
-public var displayCash:Text;
+public var displayCash;
 public var started:boolean;
 // Use this for initialization
 function Start () {
 	cashReady = 100;
 	cashFlow = 10;
 	started = false;
-	displayCash = GameObject.FindWithTag("money").GetComponent(Text);
+	
 }
 
 // Update is called once per frame
 function Update () {
+	
 if(Network.isServer || Network.isClient)
 {
+	if(cashReady != int.Parse(displayCash.text))
+		cashReady = displayCash.text;
 	if (time <= Time.time - 3) {
 		time=Time.time;
 		cashReady+=cashFlow;
 	}
-	displayCash.text = cashReady.ToString();
+	displayCash = ("$" + cashReady.ToString());
 }
 }
 
@@ -34,4 +39,10 @@ public function changeFlow(temp:int){
 }
 public function getCash(){
 	return cashReady;
+}
+function OnConnectedToServer(){
+	displayCash = GameObject.FindWithTag("money").GetComponent(UI.Text);
+}
+function OnPlayerConnection() {
+	displayCash = GameObject.FindWithTag("money").GetComponent(UI.Text);
 }

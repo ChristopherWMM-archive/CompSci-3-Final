@@ -1,4 +1,5 @@
 ﻿import UnityEngine.UI;
+
 var money;
 public var store;
 function Start () {
