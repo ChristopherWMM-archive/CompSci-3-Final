@@ -11,6 +11,8 @@ private var startRot : Quaternion;
 
 var possibleTargets : GameObject[];
 
+var particle : GameObject;
+
 function Start(){
 	 startRot = transform.rotation;
 }
@@ -38,8 +40,11 @@ function Update(){
 
 function Fire(){
 	CancelInvoke();
-	if(target)
+	if(target){
+		audio.Play();
 		Instantiate(projectile, gameObject.transform.position, gameObject.transform.rotation);
+		Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
+	}
 }
 
 function FindValidTarget(){
