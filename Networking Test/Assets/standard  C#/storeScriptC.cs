@@ -14,10 +14,11 @@ public class storeScriptC : MonoBehaviour {
 			{
 				if (Input.GetKeyDown (KeyCode.Keypad1)) {
 					GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (1, 1);
+					print ("key 1");
 				} else if (Input.GetKeyDown (KeyCode.Keypad2)) {
-					GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (1, 2);
+					GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (2, 1);
 				} else if (Input.GetKeyDown (KeyCode.Keypad3)) {
-					GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (1, 3);
+					GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (3, 1);
 				} else if (Input.GetKeyDown (KeyCode.Keypad6)) {
 					GameObject.FindWithTag ("hud").GetComponent <MenuManager>().HideMenu (store);
 				}
@@ -25,7 +26,7 @@ public class storeScriptC : MonoBehaviour {
 			if (Network.isClient) {
 				{
 					if (Input.GetKeyDown (KeyCode.Keypad1)) {
-						GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (2, 1);
+						GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (1, 2);
 					} else if (Input.GetKeyDown (KeyCode.Keypad2)) {
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff>().spawnEnemys (2, 2);
 					} else if (Input.GetKeyDown (KeyCode.Keypad3)) {
