@@ -1,14 +1,16 @@
-﻿
+﻿import UnityEngine.UI;
+
 var cashFlow:int;
 public var cashReady:int;
 var time:float;
-public var displayCash:UI.Text;
+public var displayCash:Text;
 public var started:boolean;
 // Use this for initialization
 function Start () {
 	cashReady = 100;
 	cashFlow = 10;
 	started = false;
+	displayCash = GameObject.FindWithTag("money").GetComponent(Text);
 }
 
 // Update is called once per frame
@@ -29,4 +31,7 @@ public function changeCash(temp:int){
 
 public function changeFlow(temp:int){
 	cashFlow+=temp;
+}
+public function getCash(){
+	return cashReady;
 }

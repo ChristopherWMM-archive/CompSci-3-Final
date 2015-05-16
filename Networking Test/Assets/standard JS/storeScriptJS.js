@@ -1,31 +1,42 @@
-﻿#pragma strict
-var money:int;
+﻿import UnityEngine.UI;
+var money;
+public var store;
 function Start () {
 
 }
 
 function Update () {
-	
-	if(Network.isServer)
+
+	if(Network.isClient)
 	{
-		money = GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady;
 		//insert money qualifications here
 			if (Input.GetKeyDown (KeyCode.Keypad4)) {
-				GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,1);
+				if(GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady >= 10){
+					GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady -= 10;
+					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,1);
+				}
 			}
 			else if (Input.GetKeyDown (KeyCode.Keypad5)) {
-				GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,1);
+				if(GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady >= 10){
+					GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady -= 10;
+					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,1);
+				}
 			}
 	}
-	else if(Network.isClient)
-	{
-		money = GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady;
-	//insert other money qualifications here
+	else if(Network.isServer)
+	{	
+		//insert other money qualifications here
 		if (Input.GetKeyDown (KeyCode.Keypad4)) {
-			GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,2);
+			if(GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady >= 10){
+				GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady -= 10;
+				GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,2);
+			}
 		}
 		else if (Input.GetKeyDown (KeyCode.Keypad5)) {
-			GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,2);
+			if(GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady >= 10){
+				GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady -= 10;
+				GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,2);
+			}
 		}
 	}
 }
