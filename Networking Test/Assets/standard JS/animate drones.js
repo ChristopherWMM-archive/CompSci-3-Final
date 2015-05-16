@@ -1,10 +1,10 @@
-﻿#pragma strict
+﻿
 var anim : Animator;
 var alternate : boolean = false;
 var noHealth : boolean = false;
 var attack : boolean = false;
 function Start () {
-	anim=GetComponent("Animator");
+	anim=GetComponent(Animator);
 }
 
 function Update () {
