@@ -5,9 +5,10 @@ function Start () {
 }
 
 function Update () {
-	money = GameObject.FindWithTag ("money").GetComponent(cash).cashReady;
+	
 	if(Network.isServer)
 	{
+		money = GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady;
 		//insert money qualifications here
 			if (Input.GetKeyDown (KeyCode.Keypad4)) {
 				GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,1);
@@ -18,6 +19,7 @@ function Update () {
 	}
 	else if(Network.isClient)
 	{
+		money = GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady;
 	//insert other money qualifications here
 		if (Input.GetKeyDown (KeyCode.Keypad4)) {
 			GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,2);

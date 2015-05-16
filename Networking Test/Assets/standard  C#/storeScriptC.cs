@@ -4,6 +4,7 @@ using System.Collections;
 public class storeScriptC : MonoBehaviour {
 	public Menu store;
 	public int money;
+
 	// Use this for initialization
 	void Start () {
 		

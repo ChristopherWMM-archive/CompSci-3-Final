@@ -4,6 +4,8 @@ using System.Collections;
 public class MenuManager : MonoBehaviour {
 	public Menu CurrentMenu;
 	public Menu StoreMenu;
+	public AudioSource open;
+	public AudioSource close;
 	void Start () {
 		if(CurrentMenu != null)
 			ShowMenu (CurrentMenu);
@@ -24,13 +26,16 @@ public class MenuManager : MonoBehaviour {
 	public void HideMenu(Menu menu){
 		if (menu != null)
 			CurrentMenu = menu;
-
+		close.Play ();
 		CurrentMenu.IsOpen = false;
 	}
 	public void StoreMenuOpener(){
-		if (StoreMenu.IsOpen)
+		if (StoreMenu.IsOpen) {	
+			close.Play ();
 			StoreMenu.IsOpen = false;
-		else
+		} else {
+			open.Play ();
 			StoreMenu.IsOpen = true;
+		}
 	}
 }
