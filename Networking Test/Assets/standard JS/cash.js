@@ -5,8 +5,10 @@ var heroDisplay : GameObject;
 var zeroDisplay : GameObject;
 var currentDisplay;
 var cashFlow:int;
+var time:int;
+public var upgradeWalletIncrement:int = 100;
+public var maxMoney:int = 100;
 public var cashReady:int;
-var time : float;
 public var displayCash;
 public var started:boolean;
 public var period : float = 5.0;
@@ -22,15 +24,17 @@ function Start () {
 function Update () {
 	if((Network.isServer || Network.isClient) && started){
 		Invoke("addCash", period);
-		if(cashReady != int.Parse(currentDisplay.text))
-			cashReady = int.Parse(currentDisplay.text);
+		if(cashReady != int.Parse(currentDisplay.text.subString(1,currentDisplay.text.length+1)))
+			cashReady = int.Parse(currentDisplay.text.subString(1,currentDisplay.text.length+1));
 		updateDisplay();
 	}
+	
 }
 
 public function addCash(){
 	CancelInvoke();
-	cashReady+=cashFlow;
+	if(cashReady <= (maxMoney-cashFlow))
+		cashReady+=cashFlow;
 	updateDisplay();
 }
 
@@ -47,7 +51,7 @@ public function getCash(){
 }
 
 public function updateDisplay(){
-	currentDisplay.GetComponent(UI.Text).text = (cashReady.ToString());
+	currentDisplay.GetComponent(UI.Text).text = ("$" + cashReady.ToString());
 }
 
 function OnConnectedToServer(){
@@ -60,4 +64,7 @@ function OnPlayerConnected() {
 	zeroDisplay.SetActive(true);
 	started = true;
 	currentDisplay = zeroDisplay.GetComponent(UI.Text);
+}
+function upgradeWallet(){
+	maxMoney += upgradeWalletIncrement;
 }

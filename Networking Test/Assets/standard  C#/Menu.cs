@@ -6,12 +6,16 @@ public class Menu : MonoBehaviour {
 	private CanvasGroup _canvasGroup;
 
 	public bool IsOpen{
-		get { return _animator.GetBool ("IsOpen"); }
+		get { if(this.gameObject.activeInHierarchy) 
+				return _animator.GetBool ("IsOpen"); 
+			else 
+				return false;}
 		set { _animator.SetBool("IsOpen", value); }
 	}
 
 	public void Awake (){
-		_animator = GetComponent<Animator> ();
+		if(gameObject.activeSelf)
+			_animator = GetComponent<Animator> ();
 		_canvasGroup = GetComponent<CanvasGroup> ();
 
 		var rect = GetComponent<RectTransform> ();
@@ -20,10 +24,11 @@ public class Menu : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!_animator.GetCurrentAnimatorStateInfo (0).IsName ("Open")) {
-				_canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
-		} else {
-			_canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
-		}
+			if (!_animator.GetCurrentAnimatorStateInfo (0).IsName ("Open")) {
+					_canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
+			} else {
+					_canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
+			}
+
 	}
 }

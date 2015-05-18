@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\standard JS\BulletScript.js" />
      <Compile Include="Assets\standard JS\CharacterMotor.js" />
-     <Compile Include="Assets\standard JS\Connect.js" />
      <Compile Include="Assets\standard JS\FPSInputController.js" />
      <Compile Include="Assets\standard JS\FireParticles4.js" />
      <Compile Include="Assets\standard JS\IPShower.js" />
@@ -61,6 +60,7 @@
      <Compile Include="Assets\standard JS\ThirdPersonCamera.js" />
      <Compile Include="Assets\standard JS\ThirdPersonController.js" />
      <Compile Include="Assets\standard JS\TurretScript.js" />
+     <Compile Include="Assets\standard JS\WhichRadarScript.js" />
      <Compile Include="Assets\standard JS\animate drones.js" />
      <Compile Include="Assets\standard JS\base.js" />
      <Compile Include="Assets\standard JS\buildyStuff.js" />
@@ -78,7 +78,6 @@
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_Bumped.shader" />
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_AdditiveZ.shader" />
      <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
-     <None Include="Assets\Chris&apos; Stuff\Universal Sound FX\#version_history.txt" />
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain.shader" />
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_Additive.shader" />
      <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureMult.shader" />
