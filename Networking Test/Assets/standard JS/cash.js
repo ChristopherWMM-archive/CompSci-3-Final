@@ -1,7 +1,9 @@
 ﻿import UnityEngine.UI;
 import UnityEngine;
 
-
+var heroDisplay : GameObject;
+var zeroDisplay : GameObject;
+var currentDisplay;
 var cashFlow:int;
 public var cashReady:int;
 var time : float;
@@ -19,9 +21,9 @@ function Start () {
 // Update is called once per frame
 function Update () {
 	if((Network.isServer || Network.isClient) && started){
-		Invoke("addCash",period);
-		if(cashReady != int.Parse(displayCash.text))
-			cashReady = int.Parse(displayCash.text);
+		Invoke("addCash", period);
+		if(cashReady != int.Parse(currentDisplay.text))
+			cashReady = int.Parse(currentDisplay.text);
 		updateDisplay();
 	}
 }
@@ -45,17 +47,17 @@ public function getCash(){
 }
 
 public function updateDisplay(){
-	GameObject.FindWithTag("money").GetComponent(UI.Text).text = (cashReady.ToString());
+	currentDisplay.GetComponent(UI.Text).text = (cashReady.ToString());
 }
 
 function OnConnectedToServer(){
-	print("OnConnectedToServer");
+	heroDisplay.gameObject.SetActive(true);
 	started = true;
-	displayCash = GameObject.FindWithTag("money").GetComponent(UI.Text);
+	currentDisplay = heroDisplay.GetComponent(UI.Text);
 }
 
-function OnPlayerConnection() {
-	print("OnPlayerConnection");
+function OnPlayerConnected() {
+	zeroDisplay.SetActive(true);
 	started = true;
-	displayCash = GameObject.FindWithTag("money").GetComponent(UI.Text);
+	currentDisplay = zeroDisplay.GetComponent(UI.Text);
 }

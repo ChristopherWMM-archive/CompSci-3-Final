@@ -6,12 +6,10 @@ function Start () {
 	//heroRadar.gameObject.SetActive(false);
 }
 
-function Update () {
-	
-}
 function OnConnectedToServer() {
 	heroRadar.gameObject.SetActive(true);
 }
+
 function OnPlayerConnected() {
 	zeroRadar.gameObject.SetActive(true);
 }
