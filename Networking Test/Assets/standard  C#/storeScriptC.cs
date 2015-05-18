@@ -21,36 +21,42 @@ public class storeScriptC : MonoBehaviour {
 		if (store.IsOpen) {
 			cashReady = GameObject.FindWithTag ("money").GetComponent<Text>();
 
-			if (Network.isClient) {
+			if (Network.isServer) {
 				money = int.Parse (cashReady.text);
 					//insert money qualifications here
 				if (whichItem == 1 && money >= hoverCost) {
 					money-=hoverCost;
 					GameObject.FindWithTag ("money").GetComponent<Text>().text = (money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (1, 1);
+					print("I am a enemy");
 				} else if (whichItem == 2 && money >= crabCost) {
 					money -= crabCost;
 					GameObject.FindWithTag ("money").GetComponent<Text>().text = (money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (2, 1);
+					print("I am a enemy");
 				} else if (whichItem == 3 && money >= virusCost) {
 					money -= virusCost;
 					GameObject.FindWithTag ("money").GetComponent<Text>().text = (money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (3, 1);
+					print("I am a enemy");
 				} 
-			} else if (Network.isServer) {
+			} else if (Network.isClient) {
 				money = int.Parse (cashReady.text);
 				if (whichItem == 1 && money >= hoverCost) {
 					money -= hoverCost;
 					GameObject.FindWithTag ("money").GetComponent<Text>().text = (money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (1, 2);
+					print("I am a enemy");
 				} else if (whichItem == 2 && money >= crabCost) {
 					money -= crabCost;
 					GameObject.FindWithTag ("money").GetComponent<Text>().text = (money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (2, 2);
+					print("I am a enemy");
 				} else if (whichItem == 3  && money >= virusCost) {
 					money -= virusCost;
 					GameObject.FindWithTag ("money").GetComponent<Text>().text = (money.ToString ());
-						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (2, 3);
+						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (3, 3);
+					print("I am a enemy");
 				} 
 			}
 

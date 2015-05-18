@@ -32,3 +32,25 @@ selectedServer=temp;
 else 
 selectedClient=temp;
 }
+
+function OnTriggerEnter(temp:Collider){
+	if(temp.tag=="turretBuilder"){
+		if(Network.isServer){
+			setSelected(true,1);
+		}
+		if(Network.isClient){
+			setSelected(true,2);
+		}
+	}
+}
+
+function OnTriggerExit(temp:Collider){
+	if(temp.tag=="turretBuilder"){
+		if(Network.isServer){
+			setSelected(false,1);
+		}
+		if(Network.isClient){
+			setSelected(false,2);
+		}
+	}
+}

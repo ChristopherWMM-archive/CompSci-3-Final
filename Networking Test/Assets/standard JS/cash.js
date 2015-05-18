@@ -7,9 +7,8 @@ var currentDisplay;
 var cashFlow:int;
 var time:int;
 public var upgradeWalletIncrement:int = 100;
-public var maxMoney:int = 100;
+public var maxMoney:int = 300;
 public var cashReady:int;
-public var displayCash;
 public var started:boolean;
 public var period : float = 5.0;
 // Use this for initialization
@@ -17,7 +16,6 @@ function Start () {
 	cashReady = 100;
 	cashFlow = 10;
 	started = false;
-	displayCash = "0";
 }
 
 // Update is called once per frame
@@ -33,7 +31,7 @@ function Update () {
 
 public function addCash(){
 	CancelInvoke();
-	if(cashReady <= (maxMoney-cashFlow))
+	//if(cashReady <= (maxMoney-cashFlow))
 		cashReady+=cashFlow;
 	updateDisplay();
 }
@@ -52,6 +50,7 @@ public function getCash(){
 
 public function updateDisplay(){
 	currentDisplay.GetComponent(UI.Text).text = ("$" + cashReady.ToString());
+	print("update the cash yo");
 }
 
 function OnConnectedToServer(){
@@ -66,5 +65,6 @@ function OnPlayerConnected() {
 	currentDisplay = zeroDisplay.GetComponent(UI.Text);
 }
 function upgradeWallet(){
-	maxMoney += upgradeWalletIncrement;
+	if(maxMoney < 900)
+		maxMoney += upgradeWalletIncrement;
 }

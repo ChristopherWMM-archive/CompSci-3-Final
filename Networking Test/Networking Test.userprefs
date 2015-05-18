@@ -1,17 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\standard JS\MineScript.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\standard JS\groundScript.js">
     <Files>
-      <File FileName="Assets\standard JS\MineScript.js" Line="51" Column="23" />
-      <File FileName="Assets\standard JS\buildyStuff.js" Line="1" Column="1" />
-      <File FileName="Assets\standard JS\storeScriptJS.js" Line="1" Column="1" />
-      <File FileName="Assets\standard  C#\stuff.cs" Line="1" Column="1" />
-      <File FileName="Assets\standard  C#\MenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\standard  C#\IPAddress.cs" Line="1" Column="1" />
-      <File FileName="Assets\standard  C#\storeScriptC.cs" Line="1" Column="1" />
-      <File FileName="Assets\standard  C#\Enemyscript.cs" Line="1" Column="1" />
-      <File FileName="Assets\standard JS\FireParticles4.js" Line="1" Column="1" />
-      <File FileName="Assets\standard JS\enemyScript.js" Line="1" Column="1" />
+      <File FileName="Assets\standard  C#\storeScriptC.cs" Line="58" Column="84" />
+      <File FileName="Assets\standard JS\groundScript.js" Line="50" Column="4" />
+      <File FileName="Assets\standard JS\buildyStuff.js" Line="42" Column="1" />
+      <File FileName="Assets\standard JS\cash.js" Line="28" Column="3" />
+      <File FileName="Assets\standard JS\storeScriptJS.js" Line="70" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

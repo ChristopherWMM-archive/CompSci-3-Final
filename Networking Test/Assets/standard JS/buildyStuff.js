@@ -39,24 +39,3 @@ function buildTurret(temp2:int,type:int){
 	}
 }
 
-function OnTriggerEnter(temp:Collider){
-	if(temp.tag=="Ground"){
-		if(Network.isServer){
-			temp.GetComponent(groundScript).setSelected(true,1);
-		}
-		if(Network.isClient){
-			temp.GetComponent(groundScript).setSelected(true,2);
-		}
-	}
-}
-
-function OnTriggerExit(temp:Collider){
-	if(temp.tag=="Ground"){
-		if(Network.isServer){
-			temp.GetComponent(groundScript).setSelected(false,1);
-		}
-		if(Network.isClient){
-			temp.GetComponent(groundScript).setSelected(false,2);
-		}
-	}
-}

@@ -10,65 +10,70 @@ var walletText:String;
 public var store;
 
 function Start () {
-	walletText = "Upgrade Wallet \n";
+	walletText = "Upgrade Wallet ";
 }
 
  public function StorePurchaseJS (whichItem:int) {
 
-	if(Network.isClient)
+	if(Network.isServer)
 	{
 		//insert money qualifications here
 			if (whichItem == 4) {
 				if(GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady >= turret1Cost){
 					GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady -= turret1Cost;
 					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,1);
+					print("I am a turret");
 				}
 			}
 			else if (whichItem == 5) {
 				if(GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady >= turret2Cost){
 					GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady -= turret2Cost;
 					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,1);
+					print("I am a turret");
 				}
 			}else if (whichItem == 6) {
 				if(GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady >= walletCost){
 					GameObject.FindWithTag ("Hero Base").GetComponent(cash).cashReady -= walletCost;
 					GameObject.FindWithTag ("Hero Base").GetComponent(cash).upgradeWallet();
-					walletCost = walletCost * 1.5;
+					walletCost = walletCost * 2;
 				}
 			}
 			GameObject.FindWithTag ("Hero Base").GetComponent(cash).updateDisplay();
 	}
-	else if(Network.isServer)
+	else if(Network.isClient)
 	{	
 		//insert other money qualifications here
 		if (whichItem == 4) {
 			if(GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady >= turret1Cost){
 				GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady -= turret1Cost;
 				GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,2);
+				print("I am a turret");
 			}
 		}
 		else if (whichItem == 5) {
 			if(GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady >= turret2Cost){
 				GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady -= turret2Cost;
 				GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,2);
+				print("I am a turret");
 			}
 		}
 		else if (whichItem == 6) {
 			if(GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady >= walletCost){
 				GameObject.FindWithTag ("Zero Base").GetComponent(cash).cashReady -= walletCost;
 				GameObject.FindWithTag ("Zero Base").GetComponent(cash).upgradeWallet();
-				walletCost = walletCost * 1.5;
+				walletCost = walletCost * 2;
 			}
 		}
 		GameObject.FindWithTag ("Zero Base").GetComponent(cash).updateDisplay();
 	}
 	GameObject.FindWithTag("walletUpgrade").GetComponent(UI.Text).text = (walletText + "($" + walletCost.ToString() + ")" );
+	
 }
 function updateDisplay(){
-	if(Network.isClient){
+	if(Network.isServer){
 		GameObject.FindWithTag("Hero Base").GetComponent(cash).updateDisplay();
 	}
-	else if(Network.isServer){
+	else if(Network.isClient){
 		GameObject.FindWithTag("Zero Base").GetComponent(cash).updateDisplay();
 	}
 }
