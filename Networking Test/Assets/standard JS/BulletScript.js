@@ -12,7 +12,7 @@ function Update() {
 }
 
 function OnTriggerEnter(other : Collider){
-	if(other.gameObject.CompareTag("Enemy")||other.gameObject.CompareTag("Enemy2")){
+	if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Enemy2")){
 		other.gameObject.GetComponent(enemyScript).Damage(damage);
 	}
 	Network.Destroy(gameObject);
