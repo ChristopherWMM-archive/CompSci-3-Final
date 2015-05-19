@@ -14,22 +14,15 @@ public class playerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Mouse0) && toggle){
+		if(Input.GetKeyDown(KeyCode.Mouse0) && leftGun && !toggle){
 			Instantiate(bullet, spawn1.position, spawn1.rotation);
-			Instantiate(bullet, spawn2.position, spawn2.rotation);
-		}
-
-		else if(Input.GetKeyDown(KeyCode.Mouse0) && leftGun && !toggle){
-			Instantiate(bullet, spawn1.position, spawn1.rotation);
+			audio.Play();
 			leftGun = !leftGun;
 		}
 		else if(Input.GetKeyDown(KeyCode.Mouse0) && !leftGun && !toggle){
 			Instantiate(bullet, spawn2.position, spawn2.rotation);
+			audio.Play();
 			leftGun = !leftGun;
 		}
-
-
-		if(Input.GetKeyDown(KeyCode.Mouse1))
-			toggle = !toggle;
 	}
 }
