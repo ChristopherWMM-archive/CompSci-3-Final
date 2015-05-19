@@ -15,6 +15,6 @@ public function quitGame () {
 public function startGame () {
 	if(GameObject.FindWithTag("server").GetComponent("IPAddress").isServer && GameObject.FindWithTag("joining").GetComponent("JoiningSession").isClient)
 	{
-		GameObject.FindWithTag("hero").GetComponent(cash).started = true;
+		//GameObject.FindWithTag("hero").GetComponent(cash).started = true;
 	}
 }
