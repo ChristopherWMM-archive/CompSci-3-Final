@@ -31,8 +31,8 @@ function Update () {
 			oneTime = false;
 		}
 		if(!((int.Parse(currentDisplay.text.Substring(1))).Equals(cashReady)))
-			cashReady = int.Parse(currentDisplay.text.Substring(1));
 		updateDisplay();
+		cashReady = int.Parse(currentDisplay.text.Substring(1));
 	}
 	
 }
@@ -57,6 +57,11 @@ public function getCash(){
 }
 
 public function updateDisplay(){
+	if(Network.isClient)
+		currentDisplay = zeroDisplay.GetComponent(UI.Text);
+	else if(Network.isServer)
+		currentDisplay = heroDisplay.GetComponent(UI.Text);
+		
 	currentDisplay.GetComponent(UI.Text).text = ("$" + cashReady.ToString());
 }
 

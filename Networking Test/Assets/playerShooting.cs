@@ -14,6 +14,9 @@ public class playerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKeyDown(KeyCode.Tab)){
+			toggle = !toggle;
+		}
 		if(Input.GetKeyDown(KeyCode.Mouse0) && leftGun && !toggle){
 			Instantiate(bullet, spawn1.position, spawn1.rotation);
 			audio.Play();
