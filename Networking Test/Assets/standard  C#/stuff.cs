@@ -5,14 +5,14 @@ public class stuff : MonoBehaviour {
 	public Transform pref;
 	public Transform pref2;
 	public Transform pref3;
-	public GameObject thing;
-	public GameObject thing2;
+	public GameObject zero;
+	public GameObject hero;
 	public Transform turret;
 
 	// Use this for initialization
 	void Start () {
-		thing=GameObject.FindGameObjectWithTag ("Zero");
-		thing2=GameObject.FindGameObjectWithTag ("Hero");
+		zero=GameObject.FindGameObjectWithTag ("Zero");
+		hero=GameObject.FindGameObjectWithTag ("Hero");
 	}
 	
 	// Update is called once per frame
@@ -23,21 +23,21 @@ public class stuff : MonoBehaviour {
 		if (networkView.isMine) {
 				if (type == 1) {
 						if (temp==1) {
-								Network.Instantiate (pref, thing.transform.position, thing.transform.rotation, 5);
+							Network.Instantiate (pref, zero.transform.position, zero.transform.rotation, 5);
 						} else {
-								Network.Instantiate (pref, thing2.transform.position, thing2.transform.rotation, 5);
+							Network.Instantiate (pref, hero.transform.position, hero.transform.rotation, 5);
 						}
 				} else if (type == 2) {
 						if (temp==1) {
-								Network.Instantiate (pref2, thing.transform.position, thing.transform.rotation, 5);
+							Network.Instantiate (pref2, zero.transform.position, zero.transform.rotation, 5);
 						} else {
-								Network.Instantiate (pref2, thing2.transform.position, thing2.transform.rotation, 5);
+							Network.Instantiate (pref2, hero.transform.position, hero.transform.rotation, 5);
 						}
 				} else {
 						if (temp==1) {
-								Network.Instantiate (pref3, thing.transform.position, thing.transform.rotation, 5);
+							Network.Instantiate (pref3, zero.transform.position, zero.transform.rotation, 5);
 						} else {
-								Network.Instantiate (pref3, thing2.transform.position, thing2.transform.rotation, 5);
+							Network.Instantiate (pref3, hero.transform.position, hero.transform.rotation, 5);
 						}
 				}
 		}

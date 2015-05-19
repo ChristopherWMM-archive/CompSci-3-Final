@@ -1,12 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\standard JS\groundScript.js">
     <Files>
-      <File FileName="Assets\standard  C#\storeScriptC.cs" Line="58" Column="84" />
+      <File FileName="Assets\playerShooting.cs" Line="13" Column="66" />
+      <File FileName="Assets\standard  C#\storeScriptC.cs" Line="1" Column="1" />
       <File FileName="Assets\standard JS\groundScript.js" Line="50" Column="4" />
-      <File FileName="Assets\standard JS\buildyStuff.js" Line="42" Column="1" />
-      <File FileName="Assets\standard JS\cash.js" Line="28" Column="3" />
-      <File FileName="Assets\standard JS\storeScriptJS.js" Line="70" Column="2" />
+      <File FileName="Assets\standard JS\buildyStuff.js" Line="1" Column="1" />
+      <File FileName="Assets\standard JS\cash.js" Line="1" Column="1" />
+      <File FileName="Assets\standard JS\storeScriptJS.js" Line="1" Column="1" />
+      <File FileName="Assets\standard  C#\stuff.cs" Line="40" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
