@@ -21,7 +21,7 @@ function Update () {
 		target1.GetComponent(cash).changeCash(5);
 		Network.Destroy(gameObject);
 	}
-	if(Vector3.Distance (target1.position, transform.position)<=1){
+	if(Vector3.Distance (target1.position, transform.position)<=2){
 		target1.GetComponent(base).hurt(damage);
 		Network.Destroy(gameObject);
 	}

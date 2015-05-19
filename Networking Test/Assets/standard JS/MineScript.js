@@ -33,7 +33,7 @@ function Explode(){
 	Damage();
 	//Damage Stuff & Particles
 	Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
-	Destroy(gameObject.transform.parent.gameObject);
+	Network.Destroy(gameObject.transform.parent.gameObject);
 
 }
 

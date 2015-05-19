@@ -17,7 +17,7 @@ function buildTurret(temp2:int,type:int){
 				if(tiles[z].GetComponent(groundScript).getBuildable()&&tiles[z].GetComponent(groundScript).isSelected(1)){
 					tiles[z].GetComponent(groundScript).notBuildable();
 					var temp:Vector3=tiles[z].transform.position;
-					//temp.y;
+					temp.y+=2;
 					if(type==1)
 						Network.Instantiate(pref , temp, tiles[z].transform.rotation,5);
 					else
@@ -27,7 +27,7 @@ function buildTurret(temp2:int,type:int){
 				if(tiles[z].GetComponent(groundScript).getBuildable()&&tiles[z].GetComponent(groundScript).isSelected(2)){
 					tiles[z].GetComponent(groundScript).notBuildable();
 					var temp1:Vector3=tiles[z].transform.position;
-					temp1.y+=1;
+					//temp1.y;
 					if(type==1)
 						Network.Instantiate(pref , temp1, tiles[z].transform.rotation,5);
 					else

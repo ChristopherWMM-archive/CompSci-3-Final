@@ -30,8 +30,8 @@ function Update () {
 			currentDisplay.text = ("$100");
 			oneTime = false;
 		}
-		//if(!((int.Parse(currentDisplay.text.Substring(1))).Equals(cashReady)))
-		//	cashReady = int.Parse(currentDisplay.text.Substring(1));
+		if(!((int.Parse(currentDisplay.text.Substring(1))).Equals(cashReady)))
+			cashReady = int.Parse(currentDisplay.text.Substring(1));
 		updateDisplay();
 	}
 	
