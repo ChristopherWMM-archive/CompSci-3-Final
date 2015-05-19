@@ -38,4 +38,7 @@ public class MenuManager : MonoBehaviour {
 			StoreMenu.IsOpen = true;
 		}
 	}
+	public void QuitGame(){
+		Application.Quit ();
+	}
 }

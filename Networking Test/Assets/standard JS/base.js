@@ -4,9 +4,10 @@ import UnityEngine.UI;
 var health:int;
 var yourHealth:UI.Text;
 var enemyHealth:UI.Text;
+var gameOver:GameObject;
 function Start () {
-health =100;
-
+	health =100;
+	gameOver.SetActive(false);
 }
 
 function Update () {
@@ -25,8 +26,8 @@ function Update () {
 			enemyHealth.text = (health + "%");
 	}
 	if(health<=0){
-		print(transform.tag+" dead");
-		Application.Quit();
+		gameOver.SetActive(true);
+		gameOver.GetComponentInChildren(UI.Text).text = (transform.tag + "Wins!");
 	}
 }
 
