@@ -6,7 +6,6 @@ public class baseScript : MonoBehaviour {
 	GameObject[] enemys;
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame

@@ -18,42 +18,44 @@ public class storeScriptC : MonoBehaviour {
 	// Update is called once per frame
 	public void StorePurchaseC (int whichItem) {
 		if (store.IsOpen) {
-			cashReady = GameObject.FindWithTag ("money").GetComponent<Text>();
 
-			if (Network.isServer) {
+
+			if (Network.isServer && GameObject.FindWithTag ("money1") != null) {
+				cashReady = GameObject.FindWithTag ("money1").GetComponent<Text>();
 				money = int.Parse(cashReady.text.Substring (1));
 					//insert money qualifications here
 				if (whichItem == 1 && money >= hoverCost) {
 					money-=hoverCost;
-					GameObject.FindWithTag ("money").GetComponent<Text>().text = ("$" + money.ToString ());
+					GameObject.FindWithTag ("money1").GetComponent<Text>().text = ("$" + money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (1, 1);
 					print("I am a enemy");
 				} else if (whichItem == 2 && money >= crabCost) {
 					money -= crabCost;
-					GameObject.FindWithTag ("money").GetComponent<Text>().text = ("$" + money.ToString ());
+					GameObject.FindWithTag ("money1").GetComponent<Text>().text = ("$" + money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (1, 2);
 					print("I am a enemy");
 				} else if (whichItem == 3 && money >= virusCost) {
 					money -= virusCost;
-					GameObject.FindWithTag ("money").GetComponent<Text>().text = ("$" + money.ToString ());
+					GameObject.FindWithTag ("money1").GetComponent<Text>().text = ("$" + money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (1, 3);
 					print("I am a enemy");
 				} 
-			} else if (Network.isClient) {
+			} else if (Network.isClient && GameObject.FindWithTag ("money2") != null) {
+				cashReady = GameObject.FindWithTag ("money2").GetComponent<Text>();
 				money = int.Parse(cashReady.text.Substring (1));
 				if (whichItem == 1 && money >= hoverCost) {
 					money -= hoverCost;
-					GameObject.FindWithTag ("money").GetComponent<Text>().text = ("$" + money.ToString ());
+					GameObject.FindWithTag ("money2").GetComponent<Text>().text = ("$" + money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (2, 1);
 					print("I am a enemy");
 				} else if (whichItem == 2 && money >= crabCost) {
 					money -= crabCost;
-					GameObject.FindWithTag ("money").GetComponent<Text>().text = ("$" + money.ToString ());
+					GameObject.FindWithTag ("money2").GetComponent<Text>().text = ("$" + money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (2, 2);
 					print("I am a enemy");
 				} else if (whichItem == 3  && money >= virusCost) {
 					money -= virusCost;
-					GameObject.FindWithTag ("money").GetComponent<Text>().text = ("$" + money.ToString ());
+					GameObject.FindWithTag ("money2").GetComponent<Text>().text = ("$" + money.ToString ());
 						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (2, 3);
 					print("I am a enemy");
 				} 

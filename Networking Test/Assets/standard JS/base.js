@@ -17,6 +17,14 @@ function Update () {
 			yourHealth.text = (health + "%");
 		else if(transform.tag == "Zero Base" && int.Parse(enemyHealth.text.Substring(0,enemyHealth.text.Length-1)) != health)
 			enemyHealth.text = (health + "%");
+		if(transform.tag == "Hero Base" && health <= 0){
+			gameOver.SetActive(true);
+			gameOver.GetComponentInChildren(UI.Text).text = ("Client Wins!");
+		}
+		if(transform.tag == "Zero Base" && health <= 0){
+			gameOver.SetActive(true);
+			gameOver.GetComponentInChildren(UI.Text).text = ("Host Wins!");
+		}
 	}
 	else if(Network.isClient)
 	{
@@ -24,10 +32,14 @@ function Update () {
 			yourHealth.text = (health + "%");
 		else if(this.gameObject.tag == "Hero Base" && int.Parse(enemyHealth.text.Substring(0,enemyHealth.text.Length-1)) != health)
 			enemyHealth.text = (health + "%");
-	}
-	if(health<=0){
-		gameOver.SetActive(true);
-		gameOver.GetComponentInChildren(UI.Text).text = (transform.tag + "Wins!");
+		if(transform.tag == "Zero Base" && health <= 0){
+			gameOver.SetActive(true);
+			gameOver.GetComponentInChildren(UI.Text).text = ("Client Wins!");
+		}
+		if(transform.tag == "Hero Base" && health <= 0){
+			gameOver.SetActive(true);
+			gameOver.GetComponentInChildren(UI.Text).text = ("Host Wins!");
+		}
 	}
 }
 

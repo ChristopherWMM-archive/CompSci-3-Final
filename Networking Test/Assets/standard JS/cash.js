@@ -3,10 +3,11 @@ import UnityEngine;
 
 var heroDisplay : GameObject;
 var zeroDisplay : GameObject;
-var currentDisplay;
+var currentDisplay:UI.Text;
 var cashFlow:int;
 var time:int;
 var oneTime;
+var timer:float;
 public var upgradeWalletIncrement:int = 100;
 public var maxMoney:int = 300;
 public var cashReady:int;
@@ -18,12 +19,23 @@ function Start () {
 	cashFlow = 10;
 	started = false;
 	oneTime = true;
+	timer = 0;
 }
 
 // Update is called once per frame
 function Update () {
 	if((Network.isServer || Network.isClient) && started){
-		Invoke("addCash", period);
+	if(cashReady >= (maxMoney-10))
+		cashFlow = 0;
+	else if(cashReady <= (maxMoney-10))
+		cashFlow = 10;
+		
+		timer = timer + Time.deltaTime;
+		if(timer >= 5)
+		{
+			timer = 0;
+			addCash();
+		}
 		
 		if(oneTime)
 		{
@@ -38,9 +50,8 @@ function Update () {
 }
 
 public function addCash(){
-	CancelInvoke();
-	//if(cashReady <= (maxMoney-cashFlow))
-		cashReady+=cashFlow;
+
+	cashReady+=cashFlow;
 	updateDisplay();
 }
 
@@ -67,7 +78,7 @@ function OnConnectedToServer(){
 }
 
 function OnPlayerConnected() {
-	zeroDisplay.SetActive(true);
+	zeroDisplay.gameObject.SetActive(true);
 	started = true;
 	currentDisplay = zeroDisplay.GetComponent(UI.Text);
 }
