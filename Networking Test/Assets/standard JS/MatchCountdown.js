@@ -1,38 +1,45 @@
 ﻿import UnityEngine.UI;
 
-var serverReady;
-var clientReady;
+var ready;
 var countdown:int = 20;
-var period;
+var timer:float;
+var show:GameObject;
 var display:UI.Text;
 var oneTime;
 var buttonRow:GameObject;
 function Start () {
-	period = 1;
 	oneTime = true;
+	ready = false;
+	show.SetActive(false);
+	buttonRow.SetActive(false);
 }
 function Update () {
-	if(serverReady && clientReady)
+	if(ready)
 	{
 		if(oneTime)
 		{
-			display.SetActive(true);
+			show.SetActive(true);
 			display.text = "20";
+			oneTime = false;
 		}
-		Invoke("counter",period);
+		timer = timer + Time.deltaTime;
+		if(timer>=1.0)
+			counter();
 		if(countdown <= 0)
 		{
 			buttonRow.SetActive(true);
+			show.SetActive(false);
 		}
 	}
 }
 function counter () {
+	timer = 0;
 	countdown--;
-	display.text = countdown.ToString();
+	display.text = (countdown.ToString());
 }
-function OnPlayerConnected () {
-	serverReady = true;
+function OnPlayerConnected(){
+	ready = true;
 }
-function OnConnectedToServer () {
-	clientReady = true;
+function OnConnectedToServer(){
+	ready = true;
 }
