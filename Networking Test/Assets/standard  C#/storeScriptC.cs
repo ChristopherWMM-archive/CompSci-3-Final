@@ -17,9 +17,8 @@ public class storeScriptC : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void StorePurchaseC (int whichItem) {
+		print ("someone is trying to buy stuff");
 		if (store.IsOpen) {
-
-
 			if (Network.isServer && GameObject.FindWithTag ("money1") != null) {
 				cashReady = GameObject.FindWithTag ("money1").GetComponent<Text>();
 				money = int.Parse(cashReady.text.Substring (1));
@@ -27,7 +26,7 @@ public class storeScriptC : MonoBehaviour {
 				if (whichItem == 1 && money >= hoverCost) {
 					money-=hoverCost;
 					GameObject.FindWithTag ("money1").GetComponent<Text>().text = ("$" + money.ToString ());
-						GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (1, 1);
+					GameObject.FindWithTag ("stuffScript").GetComponent <stuff> ().spawnEnemys (1, 1);
 					print("I am a enemy");
 				} else if (whichItem == 2 && money >= crabCost) {
 					money -= crabCost;
