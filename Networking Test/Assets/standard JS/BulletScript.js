@@ -15,6 +15,6 @@ function OnTriggerEnter(other : Collider){
 	if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Enemy2")){
 		other.gameObject.GetComponent(enemyScript).Damage(damage);
 	}
-	else if(!other.gameObject.CompareTag("stuffScript"))
+	else if(!other.gameObject.CompareTag("stuffScript") || !other.gameObject.CompareTag("turret"))
 	Network.Destroy(gameObject);
 }

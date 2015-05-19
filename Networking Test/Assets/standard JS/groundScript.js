@@ -16,7 +16,7 @@ function Update () {
 		if(tester){
 			print("player "+z+" is "+Vector3.Distance(transform.position,players[z].transform.position)+" units away");
 		}
-		if(Vector3.Distance(transform.position,players[z].transform.position)<1.4){
+		if(Vector3.Distance(transform.position,players[z].transform.position)<1.6){
 			if(transform.parent.name=="Hero")
 				selectedServer = true;
 			else

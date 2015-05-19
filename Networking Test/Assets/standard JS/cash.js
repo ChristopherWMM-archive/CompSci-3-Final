@@ -30,12 +30,7 @@ function Update () {
 	else if(cashReady <= (maxMoney-10))
 		cashFlow = 10;
 		
-		timer = timer + Time.deltaTime;
-		if(timer >= 5)
-		{
-			timer = 0;
-			addCash();
-		}
+		Invoke("addCash",period);
 		
 		if(oneTime)
 		{
@@ -72,15 +67,15 @@ public function updateDisplay(){
 }
 
 function OnConnectedToServer(){
-	heroDisplay.gameObject.SetActive(true);
-	started = true;
-	currentDisplay = heroDisplay.GetComponent(UI.Text);
-}
-
-function OnPlayerConnected() {
 	zeroDisplay.gameObject.SetActive(true);
 	started = true;
 	currentDisplay = zeroDisplay.GetComponent(UI.Text);
+}
+
+function OnPlayerConnected() {
+	heroDisplay.gameObject.SetActive(true);
+	started = true;
+	currentDisplay = heroDisplay.GetComponent(UI.Text);
 }
 function upgradeWallet(){
 	if(maxMoney < 900)

@@ -10,12 +10,15 @@ public class playerShooting : MonoBehaviour {
 	public bool toggle;
 	// Use this for initialization
 	void Start () {
-		store = GameObject.FindWithTag ("store").GetComponent<Menu> ();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!store.IsOpen&&networkView.isMine) {
+		if(!store)
+			store = GameObject.FindWithTag("menuManager").GetComponent<MenuManager>().StoreMenu;
+
+		if (!store.IsOpen && networkView.isMine) {
 			if (Input.GetKeyDown (KeyCode.Mouse0) && leftGun && !toggle) {
 					Instantiate (bullet, spawn1.position, spawn1.rotation);
 					audio.Play ();
