@@ -6,6 +6,7 @@ var zeroDisplay : GameObject;
 var currentDisplay;
 var cashFlow:int;
 var time:int;
+var oneTime;
 public var upgradeWalletIncrement:int = 100;
 public var maxMoney:int = 300;
 public var cashReady:int;
@@ -16,14 +17,21 @@ function Start () {
 	cashReady = 100;
 	cashFlow = 10;
 	started = false;
+	oneTime = true;
 }
 
 // Update is called once per frame
 function Update () {
 	if((Network.isServer || Network.isClient) && started){
 		Invoke("addCash", period);
-		if(cashReady != int.Parse(currentDisplay.text.subString(1,currentDisplay.text.length+1)))
-			cashReady = int.Parse(currentDisplay.text.subString(1,currentDisplay.text.length+1));
+		
+		if(oneTime)
+		{
+			currentDisplay.text = ("$100");
+			oneTime = false;
+		}
+		if(!((int.Parse(currentDisplay.text.Substring(1))).Equals(cashReady)))
+			cashReady = int.Parse(currentDisplay.text.Substring(1));
 		updateDisplay();
 	}
 	
@@ -50,7 +58,6 @@ public function getCash(){
 
 public function updateDisplay(){
 	currentDisplay.GetComponent(UI.Text).text = ("$" + cashReady.ToString());
-	print("update the cash yo");
 }
 
 function OnConnectedToServer(){
