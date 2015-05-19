@@ -9,21 +9,21 @@ players = GameObject.FindGameObjectsWithTag("stuffScript");
 }
 
 function Update () {
-	if(players.Length!=2)
-		players=GameObject.FindGameObjectsWithTag("stuffScript");
-		
-	for(var z:int=0;z<players.Length;z++){
-		if(Vector3.Distance(transform.position,players[z].transform.position)){
-			if(transform.parent.name=="Hero")
-				selectedServer = true;
-			else
-				selectedServer = false;	
-		}
-		else{
-			selectedServer = false;
-			selectedClient = false;
-		}
-	}
+//	if(players.Length!=2)
+//		players=GameObject.FindGameObjectsWithTag("stuffScript");
+//		
+//	for(var z:int=0;z<players.Length;z++){
+//		if(Vector3.Distance(transform.position,players[z].transform.position)){
+//			if(transform.parent.name=="Hero")
+//				selectedServer = true;
+//			else
+//				selectedServer = false;	
+//		}
+//		else{
+//			selectedServer = false;
+//			selectedClient = false;
+//		}
+//	}
 }
 
 function getBuildable(){

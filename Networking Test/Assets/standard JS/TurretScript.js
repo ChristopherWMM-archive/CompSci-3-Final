@@ -48,7 +48,7 @@ function Fire(){
 }
 
 function FindValidTarget(){
-	possibleTargets = GameObject.FindGameObjectsWithTag("enemy");
+	possibleTargets = GameObject.FindGameObjectsWithTag("Enemy");
 	var foundTarget : boolean = false;
 	var foundNewTarget : boolean = false;
 	for(var z:int=0;z<possibleTargets.length;z++){
