@@ -22,39 +22,45 @@ function Start () {
 		{
 			money = int.Parse(cashReady.text.Substring(1));
 			if (whichItem == 4 && money <= turret1Cost) {
+					money -= turret1Cost;
 					GameObject.FindWithTag ("money").GetComponent(UI.Text).text = ("$" + money.ToString ());
 					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,1);
 					print("I am a turret");
 			}
 			else if (whichItem == 5 && money <= turret2Cost) {
+					money -= turret2Cost;
 					GameObject.FindWithTag ("money").GetComponent(UI.Text).text = ("$" + money.ToString ());
 					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(1,2);
 					print("I am a turret");
 			}else if (whichItem == 6 && money <= walletCost) {
+					money -= walletCost;
 					GameObject.FindWithTag ("money").GetComponent(UI.Text).text = ("$" + money.ToString ());
 					GameObject.FindWithTag ("Hero Base").GetComponent(cash).upgradeWallet();
 					walletCost = walletCost * 2;
 			}
-			//GameObject.FindWithTag ("Hero Base").GetComponent(cash).updateDisplay();
+			GameObject.FindWithTag ("Hero Base").GetComponent(cash).updateDisplay();
 		}
 		else if(Network.isClient)
 		{
 			money = int.Parse(cashReady.text.Substring(1));
 			if (whichItem == 4 && money <= turret1Cost) {
+					money -= turret1Cost;
 					GameObject.FindWithTag ("money").GetComponent(UI.Text).text = ("$" + money.ToString ());
 					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,1);
 					print("I am a turret");
 			}
 			else if (whichItem == 5 && money <= turret2Cost) {
+					money -= turret2Cost;
 					GameObject.FindWithTag ("money").GetComponent(UI.Text).text = ("$" + money.ToString ());
 					GameObject.FindWithTag ("turretBuilder").GetComponent (buildyStuff).buildTurret(2,2);
 					print("I am a turret");
 			}else if (whichItem == 6 && money <= walletCost) {
+					money -= walletCost;
 					GameObject.FindWithTag ("money").GetComponent(UI.Text).text = ("$" + money.ToString ());
 					GameObject.FindWithTag ("Zero Base").GetComponent(cash).upgradeWallet();
 					walletCost = walletCost * 2;
 			}
-			//GameObject.FindWithTag ("Zero Base").GetComponent(cash).updateDisplay();
+			GameObject.FindWithTag ("Zero Base").GetComponent(cash).updateDisplay();
 		}
 		GameObject.FindWithTag("walletUpgrade").GetComponent(UI.Text).text = (walletText + "($" + walletCost.ToString() + ")" );
 	}
